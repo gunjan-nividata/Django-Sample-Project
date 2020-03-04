@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: local_django
+    volumes:
+      - ./django_sample_project/:/app
+    env_file:
+      - ./django_sample_project/.env
+    ports:
+      - "8000:8000"
+    command: /start

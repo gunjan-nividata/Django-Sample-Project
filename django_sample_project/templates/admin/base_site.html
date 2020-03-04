@@ -1,0 +1,11 @@
+{% extends "admin/base_site.html" %}
+
+
+{% block branding %}
+<h1 id="site-name">
+  <p><a style="color: #FFFFFF" href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></p>
+  <p>Current Program:
+    <span style="color: #FFFFFF">{{ request.session.program.name }}</span>
+  </p>
+</h1>
+{% endblock %}

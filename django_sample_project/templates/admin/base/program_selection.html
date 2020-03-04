@@ -1,0 +1,29 @@
+{% extends 'admin/base_site.html' %}
+
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block content %}
+<div id="content" class="flex">
+  <div id="content-main">
+    <form action="{% url 'program-selection-admin' %}" method="post">
+      <label>{% trans 'Select Program:' %}</label>
+      <select name="program">
+        <option>---------</option>
+        {% for program in form.fields.program.choices.queryset %}
+          <option value="{{ program.id }}">{{ program.name }}</option>
+        {% endfor %}
+      </select>
+
+      <div class="submit-row">
+        <input type="submit" value="Save" class="default" name="_save">
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+    <script type="text/javascript" src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/jquery.init.js" %}"></script>
+{% endblock %}
